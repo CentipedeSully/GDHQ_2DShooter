@@ -6,9 +6,6 @@ using UnityEngine.Events;
 public class ShipHealth : MonoBehaviour
 {
     //Declarations
-    [Header("Necessary References")]
-    [SerializeField] private string _gameUtilitiesObjectName = "Game Utilities";
-
     [Header("Health Settings")]
     [SerializeField] private int _health = 3;
     [SerializeField] private List<string> _validDamagingTags;
@@ -30,9 +27,6 @@ public class ShipHealth : MonoBehaviour
     private void Awake()
     {
         _shipShieldsReference = GetComponent<ShipShieldsController>();
-
-        //Subscribe to each ship when the ship spawns via Main Spawner(s), not on ship health ================================================
-        OnShipDestroyed.AddListener(GameObject.Find(_gameUtilitiesObjectName).GetComponent<EnemySpawner>().ReportShipDeath);
     }
 
     private void Update()
@@ -57,6 +51,7 @@ public class ShipHealth : MonoBehaviour
     private void DestroyShip()
     {
         OnShipDestroyed?.Invoke(tag);
+        GetComponent<ShipDeathReporter>().ReportDeath();
         Destroy(gameObject);
     }
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3319714393720125689}
   - component: {fileID: 7195494310262347408}
   - component: {fileID: 1280449395319319400}
+  - component: {fileID: 1046467916910600829}
   - component: {fileID: 9144547345145362650}
   - component: {fileID: 5808044581194337693}
   - component: {fileID: 5471815731188797776}
@@ -134,6 +135,33 @@ MonoBehaviour:
   OnShieldsLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1046467916910600829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812583861869497094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c803429e24955d4b9b4973c1ffbe4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnObjectDisabled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &9144547345145362650
 BoxCollider2D:
   m_ObjectHideFlags: 0

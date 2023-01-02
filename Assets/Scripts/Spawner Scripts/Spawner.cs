@@ -55,4 +55,9 @@ public class Spawner : MonoBehaviour
         return Random.Range(_spawnDelayRange.x, _spawnDelayRange.y);
     }
 
+    public void ReportPlayerDeath(GameObject reportedObject)
+    {
+        _isPlayerAlive = false;  
+    }
+
 }

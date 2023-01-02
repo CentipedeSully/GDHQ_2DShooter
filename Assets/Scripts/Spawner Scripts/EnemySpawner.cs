@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _zPosition = 0;
     [SerializeField] private float _yPosition = 0;
     [SerializeField] private Transform _enemyContainer;
+    private GameObject _newSpawnedEnemy;
 
     [Header("Spawner Settings")]
     [SerializeField] private GameObject _enemyPrefab;
@@ -45,8 +46,10 @@ public class EnemySpawner : MonoBehaviour
 
     private GameObject SpawnEnemy()
     {
+        _newSpawnedEnemy = Instantiate(_enemyPrefab, CalculateRandomSpawnPosition(), Quaternion.identity, _enemyContainer);
         _currentEnemyCount += 1;
-        return Instantiate(_enemyPrefab, CalculateRandomSpawnPosition(), Quaternion.identity, _enemyContainer);
+
+        return _newSpawnedEnemy;
     }
 
     private Vector3 CalculateRandomSpawnPosition()
@@ -68,12 +71,12 @@ public class EnemySpawner : MonoBehaviour
         _isSpawning = false;
     }
 
-    public void ReportShipDeath(string shipTag)
+    public void ReportShipDeath(GameObject dyingObject)
     {
-        if (shipTag == "Player")
+        if (dyingObject.tag == "Player")
             SetIsPlayerAlive(false);
-        else if (shipTag == "Enemy")
+            
+        else if (dyingObject.tag == "Enemy")
             _currentEnemyCount -= 1;
-
     }
 }
