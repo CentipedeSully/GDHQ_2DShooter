@@ -9,7 +9,7 @@ public class ShipDeathReporter : MonoBehaviour
     [SerializeField] private string _gameUtilitiesName = "Game Utilities";
     private GameObject _gameUtilitiesReference;
     [HideInInspector]
-    public UnityEvent<GameObject> OnObjectDisabled;
+    public UnityEvent<GameObject> OnObjectDestroyed;
 
 
     //Monobehaviors
@@ -27,21 +27,21 @@ public class ShipDeathReporter : MonoBehaviour
     //Utilities
     public void ReportDeath()
     {
-        OnObjectDisabled?.Invoke(gameObject);
-        OnObjectDisabled.RemoveAllListeners();
+        OnObjectDestroyed?.Invoke(gameObject);
+        OnObjectDestroyed.RemoveAllListeners();
     }
 
     private void SubscribeSpawnersToThisScript()
     {
         if (tag == "Player")
         {
-            OnObjectDisabled.AddListener(_gameUtilitiesReference.GetComponent<EnemySpawner>().ReportShipDeath);
-            OnObjectDisabled.AddListener(_gameUtilitiesReference.GetComponent<Spawner>().ReportPlayerDeath);
+            OnObjectDestroyed.AddListener(_gameUtilitiesReference.GetComponent<EnemySpawner>().ReportShipDeath);
+            OnObjectDestroyed.AddListener(_gameUtilitiesReference.GetComponent<Spawner>().ReportPlayerDeath);
         }
 
         else if (tag == "Enemy")
         {
-            OnObjectDisabled.AddListener(_gameUtilitiesReference.GetComponent<EnemySpawner>().ReportShipDeath);
+            OnObjectDestroyed.AddListener(_gameUtilitiesReference.GetComponent<EnemySpawner>().ReportShipDeath);
         }
     }
 
