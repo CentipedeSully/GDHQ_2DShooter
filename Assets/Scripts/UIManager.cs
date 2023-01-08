@@ -11,11 +11,7 @@ public class UIManager : MonoBehaviour
 
 
     //Monobehaviors
-    private void Update()
-    {
-        AddPoints(1);
-    }
-
+    //...
 
 
     //Utilities

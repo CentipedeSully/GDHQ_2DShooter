@@ -21,12 +21,19 @@ public class ShipHealth : MonoBehaviour
 
     //references
     private ShipShieldsController _shipShieldsReference;
+    private LivesController _livesControllerReference;
 
 
     //Monobhevaiors
     private void Awake()
     {
         _shipShieldsReference = GetComponent<ShipShieldsController>();
+        _livesControllerReference = GameObject.Find("Lives Display").GetComponent<LivesController>();
+    }
+
+    private void Start()
+    {
+        ReportPlayerHealthToLivesControllerUI();
     }
 
     private void Update()
@@ -65,6 +72,7 @@ public class ShipHealth : MonoBehaviour
             else
             {
                 _health -= damage;
+                ReportPlayerHealthToLivesControllerUI();
                 if (_health <= 0)
                     DestroyShip();
             }
@@ -93,5 +101,10 @@ public class ShipHealth : MonoBehaviour
         _currentInvulnerabilityDuration = 0;
     }
 
+    private void ReportPlayerHealthToLivesControllerUI()
+    {
+        if (tag == "Player")
+            _livesControllerReference.SetImage(_health);
+    }
 
 }

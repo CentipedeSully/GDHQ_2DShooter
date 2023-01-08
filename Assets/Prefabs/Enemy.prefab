@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc157c16b9c2d504e872f4f61a9caf53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameUtilitiesObjectName: Game Utilities
   _health: 1
   _validDamagingTags: []
   _invulnerabilityAfterDamageDuration: 0.5
@@ -147,21 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c803429e24955d4b9b4973c1ffbe4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnObjectDisabled:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  _gameUtilityName: Game Utilities
+  _pointValue: 10
 --- !u!61 &9144547345145362650
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -6,43 +6,32 @@ using UnityEngine.Events;
 public class ShipDeathReporter : MonoBehaviour
 {
     //Declarations
-    [SerializeField] private string _gameUtilitiesName = "Game Utilities";
-    private GameObject _gameUtilitiesReference;
-    [HideInInspector]
-    public UnityEvent<GameObject> OnObjectDestroyed;
-
+    [SerializeField] private string _gameUtilityName = "Game Utilities";
+    [SerializeField] private int _pointValue;
+    private GameObject _gameUtilityReference;
+    private EnemySpawner _enemySpawnerReference;
+    private UIManager _uiManagerReference;
 
     //Monobehaviors
     private void Awake()
     {
-        _gameUtilitiesReference = GameObject.Find(_gameUtilitiesName);
-    }
-
-    private void Start()
-    {
-        SubscribeSpawnersToThisScript();
+        _gameUtilityReference = GameObject.Find(_gameUtilityName);
+        _enemySpawnerReference = _gameUtilityReference.GetComponent<EnemySpawner>();
+        _uiManagerReference = _gameUtilityReference.GetComponent<UIManager>();
     }
 
 
     //Utilities
     public void ReportDeath()
     {
-        OnObjectDestroyed?.Invoke(gameObject);
-        OnObjectDestroyed.RemoveAllListeners();
-    }
-
-    private void SubscribeSpawnersToThisScript()
-    {
         if (tag == "Player")
-        {
-            OnObjectDestroyed.AddListener(_gameUtilitiesReference.GetComponent<EnemySpawner>().ReportShipDeath);
-            OnObjectDestroyed.AddListener(_gameUtilitiesReference.GetComponent<Spawner>().ReportPlayerDeath);
-        }
+            _enemySpawnerReference.SetIsPlayerAlive(false);
 
         else if (tag == "Enemy")
         {
-            OnObjectDestroyed.AddListener(_gameUtilitiesReference.GetComponent<EnemySpawner>().ReportShipDeath);
+            _enemySpawnerReference.DecrementInstanceCount();
+            _uiManagerReference.AddPoints(_pointValue);
         }
+            
     }
-
 }

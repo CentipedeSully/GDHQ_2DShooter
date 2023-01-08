@@ -44,6 +44,11 @@ public class EnemySpawner : MonoBehaviour
         return _isPlayerAlive;
     }
 
+    public void DecrementInstanceCount()
+    {
+        _currentEnemyCount--;
+    }
+
     private GameObject SpawnEnemy()
     {
         _newSpawnedEnemy = Instantiate(_enemyPrefab, CalculateRandomSpawnPosition(), Quaternion.identity, _enemyContainer);
@@ -71,12 +76,4 @@ public class EnemySpawner : MonoBehaviour
         _isSpawning = false;
     }
 
-    public void ReportShipDeath(GameObject dyingObject)
-    {
-        if (dyingObject.tag == "Player")
-            SetIsPlayerAlive(false);
-            
-        else if (dyingObject.tag == "Enemy")
-            _currentEnemyCount -= 1;
-    }
 }
