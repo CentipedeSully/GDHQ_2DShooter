@@ -25,7 +25,11 @@ public class ShipDeathReporter : MonoBehaviour
     public void ReportDeath()
     {
         if (tag == "Player")
+        {
             _enemySpawnerReference.SetIsPlayerAlive(false);
+            GameObject.Find("Game Over Display").GetComponent<GameOverDisplayController>().ShowGameOverDisplay();
+        }
+            
 
         else if (tag == "Enemy")
         {

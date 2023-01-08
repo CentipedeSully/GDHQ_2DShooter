@@ -11,7 +11,10 @@ public class UIManager : MonoBehaviour
 
 
     //Monobehaviors
-    //...
+    private void Start()
+    {
+        UpdateScore();
+    }
 
 
     //Utilities
