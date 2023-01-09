@@ -10,6 +10,7 @@ public class ShipDeathReporter : MonoBehaviour
     [SerializeField] private int _pointValue;
     private GameObject _gameUtilityReference;
     private EnemySpawner _enemySpawnerReference;
+    private Spawner _otherSpawnerReference;
     private UIManager _uiManagerReference;
 
     //Monobehaviors
@@ -17,6 +18,7 @@ public class ShipDeathReporter : MonoBehaviour
     {
         _gameUtilityReference = GameObject.Find(_gameUtilityName);
         _enemySpawnerReference = _gameUtilityReference.GetComponent<EnemySpawner>();
+        _otherSpawnerReference = _gameUtilityReference.GetComponent<Spawner>();
         _uiManagerReference = _gameUtilityReference.GetComponent<UIManager>();
     }
 
@@ -27,6 +29,7 @@ public class ShipDeathReporter : MonoBehaviour
         if (tag == "Player")
         {
             _enemySpawnerReference.SetIsPlayerAlive(false);
+            _otherSpawnerReference.ReportPlayerDeath(gameObject);
             GameObject.Find("Game Over Display").GetComponent<GameOverDisplayController>().ShowGameOverDisplay();
         }
             
@@ -36,6 +39,10 @@ public class ShipDeathReporter : MonoBehaviour
             _enemySpawnerReference.DecrementInstanceCount();
             _uiManagerReference.AddPoints(_pointValue);
         }
-            
+    }
+
+    public void ReportDeath(string objectTag)
+    {
+        ReportDeath();
     }
 }

@@ -8,7 +8,8 @@ public class ShipHealth : MonoBehaviour
     //Declarations
     [Header("Health Settings")]
     [SerializeField] private int _health = 3;
-    [SerializeField] private List<string> _validDamagingTags;
+    [SerializeField] private List<string> _dangerousCollidableTags;
+    [SerializeField] private float _objectDestructionDelay = 2.8f;
 
     [Header("Invulnerability Utilities")]
     [SerializeField] private float _invulnerabilityAfterDamageDuration = .5f;
@@ -43,9 +44,9 @@ public class ShipHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_validDamagingTags.Contains(collision.gameObject.tag))
+        if (_dangerousCollidableTags.Contains(collision.gameObject.tag))
         {
-            if (collision.gameObject.tag == "Enemy")
+            if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Asteroid")
                 collision.gameObject.GetComponent<ShipHealth>().DamageHealth();
 
             DamageHealth();
@@ -58,16 +59,18 @@ public class ShipHealth : MonoBehaviour
     private void DestroyShip()
     {
         OnShipDestroyed?.Invoke(tag);
-        GetComponent<ShipDeathReporter>().ReportDeath();
-        Destroy(gameObject);
+
+        Destroy(gameObject, _objectDestructionDelay);
     }
 
     public void DamageHealth(int damage = 1)
     {
         if (!_isInvulnerable)
         {
-            if (_shipShieldsReference.IsShieldsActive())
+            if (_shipShieldsReference != null && _shipShieldsReference.IsShieldsActive())
+            {
                 _shipShieldsReference.DamageShields();
+            }
 
             else
             {

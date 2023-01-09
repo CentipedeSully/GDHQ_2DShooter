@@ -138,4 +138,14 @@ public class MoveObject : MonoBehaviour
         return _speed;
     }
 
+    public void SetVerticalWrap(bool newValue)
+    {
+        _isVerticalWrapEnabled = newValue;
+    }
+
+    public void SetHorizontalWrap(bool newValue)
+    {
+        _isHorizontalWrapEnabled = newValue;
+    }
+
 }

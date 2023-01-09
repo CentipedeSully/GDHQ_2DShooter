@@ -14,9 +14,13 @@ GameObject:
   - component: {fileID: 7195494310262347408}
   - component: {fileID: 1280449395319319400}
   - component: {fileID: 1046467916910600829}
+  - component: {fileID: 7270606447908615516}
+  - component: {fileID: 7997498326068285840}
+  - component: {fileID: 3365753455400453107}
   - component: {fileID: 9144547345145362650}
   - component: {fileID: 5808044581194337693}
   - component: {fileID: 5471815731188797776}
+  - component: {fileID: 5687159747444074163}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -99,7 +103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 1
-  _validDamagingTags: []
+  _dangerousCollidableTags:
+  - Player
+  _objectDestructionDelay: 1.4
   _invulnerabilityAfterDamageDuration: 0.5
   _isInvulnerable: 0
   OnShipDamaged:
@@ -107,7 +113,55 @@ MonoBehaviour:
       m_Calls: []
   OnShipDestroyed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1046467916910600829}
+        m_TargetAssemblyTypeName: ShipDeathReporter, Assembly-CSharp
+        m_MethodName: ReportDeath
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7270606447908615516}
+        m_TargetAssemblyTypeName: DisableColliders, Assembly-CSharp
+        m_MethodName: DisableAllColliders
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7997498326068285840}
+        m_TargetAssemblyTypeName: PlayDeathAnimation, Assembly-CSharp
+        m_MethodName: TriggerDeathAnim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3365753455400453107}
+        m_TargetAssemblyTypeName: DisableScreenWrapping, Assembly-CSharp
+        m_MethodName: DisableWrapping
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1280449395319319400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +202,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameUtilityName: Game Utilities
   _pointValue: 10
+--- !u!114 &7270606447908615516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812583861869497094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1f731c13ceecb4b94d0c8450b31e5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7997498326068285840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812583861869497094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175c87c92bb90b34c8eebf04b8fba65c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerParamName: OnDeath
+--- !u!114 &3365753455400453107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812583861869497094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b22437e54fc6be48b1fbecf05a02f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &9144547345145362650
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -161,7 +252,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.020874321, y: -0.020963192}
+  m_Offset: {x: 0.01649046, y: 0.44582963}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -172,7 +263,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6161047, y: 3.0548043}
+  m_Size: {x: 2.4373465, y: 2.121182}
   m_EdgeRadius: 0
 --- !u!50 &5808044581194337693
 Rigidbody2D:
@@ -247,3 +338,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5687159747444074163
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812583861869497094}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a8b4b2e32cae6ee4295af79df108407e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

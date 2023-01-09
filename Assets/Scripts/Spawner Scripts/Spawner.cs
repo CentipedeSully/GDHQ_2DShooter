@@ -19,11 +19,7 @@ public class Spawner : MonoBehaviour
 
 
     //Monobehaviors
-    private void Start()
-    {
-        StartCoroutine(SpawnObjectsUntilPlayerIsDead());
-    }
-
+    //...
 
 
     //Utilites
@@ -58,6 +54,11 @@ public class Spawner : MonoBehaviour
     public void ReportPlayerDeath(GameObject reportedObject)
     {
         _isPlayerAlive = false;  
+    }
+
+    public void StartSpawning()
+    {
+        StartCoroutine(SpawnObjectsUntilPlayerIsDead());
     }
 
 }

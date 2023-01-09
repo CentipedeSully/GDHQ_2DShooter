@@ -26,11 +26,7 @@ public class EnemySpawner : MonoBehaviour
 
 
     //Monobehaviors
-    private void Start()
-    {
-        _spawnDelayTimer = new WaitForSeconds(_spawnDelay);
-        StartCoroutine(EnterSpawning());
-    }
+    //...
 
 
     //Utilities
@@ -76,4 +72,9 @@ public class EnemySpawner : MonoBehaviour
         _isSpawning = false;
     }
 
+    public void StartSpawning()
+    {
+        _spawnDelayTimer = new WaitForSeconds(_spawnDelay);
+        StartCoroutine(EnterSpawning());
+    }
 }
