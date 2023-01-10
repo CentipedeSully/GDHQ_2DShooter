@@ -17,7 +17,7 @@ public class ShipHealth : MonoBehaviour
     [SerializeField] private bool _isInvulnerable = false;
 
     [Header("Events")]
-    public UnityEvent OnShipDamaged;
+    public UnityEvent<int> OnShipDamaged;
     public UnityEvent<string> OnShipDestroyed;
 
     //references
@@ -75,6 +75,7 @@ public class ShipHealth : MonoBehaviour
             else
             {
                 _health -= damage;
+                OnShipDamaged?.Invoke(_health);
                 ReportPlayerHealthToLivesControllerUI();
                 if (_health <= 0)
                     DestroyShip();
