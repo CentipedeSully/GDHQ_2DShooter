@@ -364,6 +364,8 @@ GameObject:
   - component: {fileID: 8471994343408132267}
   - component: {fileID: 842609549434518511}
   - component: {fileID: -6900725584886393061}
+  - component: {fileID: 6587936610103870582}
+  - component: {fileID: 2599156420479404113}
   - component: {fileID: 5314502454828003641}
   - component: {fileID: -5520638870648383335}
   - component: {fileID: -7032627057521014203}
@@ -545,6 +547,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2599156420479404113}
+        m_TargetAssemblyTypeName: AnimatePlayerExplosion, Assembly-CSharp
+        m_MethodName: AnimateDeath
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 9166763415350078157}
         m_TargetAssemblyTypeName: PlayExplosionSoundAfterDelay, Assembly-CSharp
         m_MethodName: PlaySoundAfterDelay
@@ -557,6 +571,45 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6587936610103870582}
+        m_TargetAssemblyTypeName: DisableObjectsOnDeath, Assembly-CSharp
+        m_MethodName: DisableObjects
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6587936610103870582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470596911319316888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5348083b2380b30419d7b3f45f628f14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameobjects:
+  - {fileID: 1045243994958858932}
+--- !u!114 &2599156420479404113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470596911319316888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8d800f75e1d7c46be238dab87d01ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerParamName: OnDeath
 --- !u!114 &5314502454828003641
 MonoBehaviour:
   m_ObjectHideFlags: 0

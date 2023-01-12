@@ -16,9 +16,15 @@ public class ShipShieldsController : MonoBehaviour
     public UnityEvent OnShieldsDamaged;
     public UnityEvent OnShieldsLost;
 
+    //references
+    private LivesController _shieldsUIController;
+
 
     //Monbehaviors
-    //...
+    private void Awake()
+    {
+        _shieldsUIController = GameObject.Find("Shields Display").GetComponent<LivesController>();
+    }
 
 
     //Utilties
@@ -39,6 +45,8 @@ public class ShipShieldsController : MonoBehaviour
             _shieldLevel--;
             OnShieldsLost?.Invoke();
         }
+
+        _shieldsUIController.SetImage(_shieldLevel);
     }
 
     public void GainShields()
@@ -53,6 +61,8 @@ public class ShipShieldsController : MonoBehaviour
             _shieldLevel++;
             OnShieldsStrengthened?.Invoke();
         }
+
+        _shieldsUIController.SetImage(_shieldLevel);
 
     }
 }

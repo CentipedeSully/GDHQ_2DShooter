@@ -17,8 +17,6 @@ public class ShipHealth : MonoBehaviour
     private float _currentInvulnerabilityDuration = 0;
     [SerializeField] private bool _isInvulnerable = false;
 
-    [Header("Other Necessary References")]
-
 
     [Header("Events")]
     public UnityEvent<int> OnShipDamaged;

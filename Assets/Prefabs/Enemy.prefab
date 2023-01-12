@@ -18,6 +18,9 @@ GameObject:
   - component: {fileID: 7270606447908615516}
   - component: {fileID: 7997498326068285840}
   - component: {fileID: 3365753455400453107}
+  - component: {fileID: 2421918839726027688}
+  - component: {fileID: 9223035615227048421}
+  - component: {fileID: 3719697942830534148}
   - component: {fileID: 9144547345145362650}
   - component: {fileID: 5808044581194337693}
   - component: {fileID: 5471815731188797776}
@@ -40,7 +43,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 773745120242146115}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -266,6 +270,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b22437e54fc6be48b1fbecf05a02f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2421918839726027688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812583861869497094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ed6f212b4f9f444996e9376f20a5a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnLocation: {fileID: 773745120242146115}
+  _laserPrefab: {fileID: 8857878724663512021, guid: 98369b1e61dfd324290ea1adae818526, type: 3}
+  _tripleShotPrefab: {fileID: 0}
+  _hostileTags:
+  - Player
+  _laserContainerName: Laser Container
+  _laserSoundObjectName: Laser Shot Sound
+  _TripleShotSoundObjectName: TripleShot Sound
+--- !u!114 &9223035615227048421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812583861869497094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27685682d74a0164c845a271b05ac995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shotDirection: {x: 0, y: 0, z: -1}
+  _cooldownDuration: 1.6
+  _isShotReady: 1
+  _shootCommand: 0
+  _isShootingEnabled: 1
+  _isTripleShotEnabled: 0
+--- !u!114 &3719697942830534148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812583861869497094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a3881abbf442f41ad3f7f1a4430e88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minShotRate: 0.5
+  _maxShotRate: 1.5
+  _shotCommandTriggerDuration: 0.1
 --- !u!61 &9144547345145362650
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -385,3 +442,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &4163683798961632684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 773745120242146115}
+  m_Layer: 0
+  m_Name: Laser Spawn Location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &773745120242146115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163683798961632684}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3812583861869497091}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
