@@ -10,11 +10,15 @@ public class ShipHealth : MonoBehaviour
     [SerializeField] private int _health = 3;
     [SerializeField] private List<string> _dangerousCollidableTags;
     [SerializeField] private float _objectDestructionDelay = 2.8f;
+    
 
     [Header("Invulnerability Utilities")]
     [SerializeField] private float _invulnerabilityAfterDamageDuration = .5f;
     private float _currentInvulnerabilityDuration = 0;
     [SerializeField] private bool _isInvulnerable = false;
+
+    [Header("Other Necessary References")]
+
 
     [Header("Events")]
     public UnityEvent<int> OnShipDamaged;

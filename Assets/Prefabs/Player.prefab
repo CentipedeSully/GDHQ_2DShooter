@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 2750740477616369626}
   - component: {fileID: 6496857383940680546}
   - component: {fileID: 2430177491466462212}
+  - component: {fileID: 9166763415350078157}
   - component: {fileID: 8664392713835087826}
   - component: {fileID: 3678899115316500309}
   - component: {fileID: 6652796028965351569}
@@ -544,6 +545,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9166763415350078157}
+        m_TargetAssemblyTypeName: PlayExplosionSoundAfterDelay, Assembly-CSharp
+        m_MethodName: PlaySoundAfterDelay
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5314502454828003641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,6 +656,8 @@ MonoBehaviour:
   - Enemy
   - Asteroid
   _laserContainerName: Laser Container
+  _laserSoundObjectName: Laser Shot Sound
+  _TripleShotSoundObjectName: TripleShot Sound
 --- !u!114 &2750740477616369626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,6 +699,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameUtilityName: Game Utilities
   _pointValue: 0
+--- !u!114 &9166763415350078157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470596911319316888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51bda0cb1c4b174abde4d412163a85b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionSoundDelay: 0.15
+  _ExplosionSoundObjectName: Explosion Sound
 --- !u!114 &8664392713835087826
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,16 +8,26 @@ public class TriggerPowerup : MonoBehaviour
     [Tooltip("0 == TripleShot, 1 == Speed, 2 == Shields")]
     [SerializeField][Range(0,2)] private int _powerupId = 0;
     [SerializeField] private string _playerTag = "Player";
+    [SerializeField] private string _powerupSoundObjectName = "Powerup Sound";
+    private AudioSource _powerupAudioClip;
+
 
     //Monobehaviors
+    private void Awake()
+    {
+        _powerupAudioClip = GameObject.Find(_powerupSoundObjectName).GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == _playerTag)
         {
             EnablePowerUp(collision.gameObject);
+            _powerupAudioClip.Play();
             Destroy(gameObject);
         }
     }
+
 
     //Utilties
     private void EnablePowerUp(GameObject _playerObject)

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6132378657723329214}
   - component: {fileID: 3726927923993875588}
   - component: {fileID: 4638284383783814228}
+  - component: {fileID: 8334611565277200676}
   - component: {fileID: 894147751546549907}
   - component: {fileID: 3508355902175511292}
   - component: {fileID: 5588510558270107108}
@@ -110,6 +111,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8334611565277200676}
+        m_TargetAssemblyTypeName: PlayExplosionSoundAfterDelay, Assembly-CSharp
+        m_MethodName: PlaySoundAfterDelay
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8334611565277200676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134870754434147353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51bda0cb1c4b174abde4d412163a85b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionSoundDelay: 0.15
+  _ExplosionSoundObjectName: Explosion Sound
 --- !u!114 &894147751546549907
 MonoBehaviour:
   m_ObjectHideFlags: 0
